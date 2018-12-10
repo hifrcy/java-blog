@@ -20,7 +20,7 @@ public class PostManager {
 		
 		URL url = null;
 		try {
-			url = new URL("https://my-json-server.typicode.com/wasthishelpful/my-java-blog/posts");
+			url = new URL("https://my-json-server.typicode.com/hifrcy/java-blog/posts");
 		} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
