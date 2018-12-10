@@ -1,6 +1,7 @@
 package com.projet.posts;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,21 +14,36 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/posts")
 public class PostsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private PostManager postManager;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PostsServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        
+        this.postManager = new PostManager();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/posts/index.jsp").forward(request, response);
+		if(request.getParameter("id") == null) {
+			request.setAttribute("posts", this.postManager.getAllPosts());
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/posts/index.jsp").forward(request, response);
+		}
+		else {
+			request.setAttribute("post",
+				this.postManager.getPostById(
+					Integer.parseInt(request.getParameter("id"))
+				)
+			);
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/posts/read.jsp").forward(request, response);
+		}
 	}
 
 }
