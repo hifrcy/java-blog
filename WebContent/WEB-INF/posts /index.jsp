@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello World</title>
+<title>My Posts</title>
 </head>
 <body>
-<h1>Hello World!!!</h1>
-
+<h1>My Posts</h1>
 </body>
 </html>
